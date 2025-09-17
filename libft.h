@@ -16,5 +16,8 @@ unsigned int	ft_strlcat(char *dest, char *src, unsigned int size);
 void			*ft_memset(void *p, int val, size_t bytes);
 void			ft_bzero(void *s, size_t n);
 void			*ft_memcpy(void *dest, void *src, size_t bytes);
+void			ft_memmove(void *dest, const void *src, size_t bytes);
+char			*ft_strchr(const char *str, int c);
+int				ft_strncmp(char *s1, char *s2, unsigned int n);
 
 #endif
