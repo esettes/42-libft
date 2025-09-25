@@ -10,12 +10,12 @@
  */
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	if (!little)
-		return (big);
+		return ((char *)big);
 	while (big[i])
 	{
 		j = 0;
@@ -27,7 +27,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 				len--;
 			}
 			if (!little[j])
-				return (big[i]);
+				return ((char *)&big[i]);
 		}
 		i++;
 	}

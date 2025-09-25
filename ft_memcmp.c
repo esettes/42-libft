@@ -53,7 +53,7 @@ int	ft_memcmp_bits(const void *s1, const void *s2, size_t n)
 	const unsigned char	*str2;
 	unsigned char		aux1, aux2;
 	char		bs1[10], bs2[10];
-	int i = 0;
+	size_t i = 0;
 
 	str1 = (const unsigned char *)s1;
 	str2 = (const unsigned char *)s2;
@@ -75,11 +75,11 @@ int	ft_memcmp_bits(const void *s1, const void *s2, size_t n)
 	return (0);
 }
 
-int main(void)
-{
-    unsigned char x[] = "hello";
-    unsigned char y[] = "hellp";
-    int r = ft_memcmp_bits(x, y, sizeof(x));
-    printf("return: %d\n", r);
-    return 0;
-}
+// int main(void)
+// {
+//     unsigned char x[] = "hello";
+//     unsigned char y[] = "hellp";
+//     int r = ft_memcmp_bits(x, y, sizeof(x));
+//     printf("return: %d\n", r);
+//     return 0;
+// }

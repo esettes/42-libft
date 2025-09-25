@@ -14,7 +14,7 @@ void	ft_memmove(void *dest, const void *src, size_t bytes)
 	unsigned char		*d;
 
 	if (!dest || !src)
-		return (NULL);
+		return ;
 	i = 0;
 	s = (const unsigned char *)src;
 	d = (unsigned char *)dest;
@@ -31,5 +31,4 @@ void	ft_memmove(void *dest, const void *src, size_t bytes)
 			i++;
 		}
 	}
-	return (d);
 }

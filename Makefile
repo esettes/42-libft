@@ -1,14 +1,32 @@
 NAME = libft.a
 
-SRCS =	./srcs/ft_putstr.c \
-		./srcs/ft_putchar.c \
-		./srcs/ft_strcmp.c \
-		./srcs/ft_strlen.c \
-		./srcs/ft_swap.c
+SRCS =	ft_strlen.c \
+		ft_isalpha.c \
+		ft_isdigit.c \
+		ft_isalnum.c \
+		ft_isascii.c \
+		ft_isprint.c \
+		ft_toupper.c \
+		ft_tolower.c \
+		ft_memset.c \
+		ft_bzero.c \
+		ft_memcpy.c \
+		ft_memmove.c \
+		ft_strchr.c \
+		ft_strncmp.c \
+		ft_strnstr.c \
+		ft_memchr.c \
+		ft_memcmp.c \
+		ft_strlcpy.c \
+		ft_strlcat.c \
+		ft_atoi.c \
+		ft_calloc.c \
+		ft_strdup.c \
+		ft_substr.c \
+		ft_strjoin.c \
+		ft_strtrim.c
 
 OBJS = $(SRCS:.c=.o)
-
-INC = ./includes
 
 CFLAGS =  -Wall -Wextra -Werror
 
@@ -17,9 +35,9 @@ AR = ar rc
 CC = gcc
 
 %.o:%.c
-	$(CC) $(CFLAGS) -I $(INC) -o $@ -c $<
+	$(CC) $(CFLAGS) -o $@ -c $<
 
-$(NAME): $(OBJS) $(INC)
+$(NAME): $(OBJS)
 	$(AR) $(NAME) $(OBJS) 
 
 all: $(NAME)
