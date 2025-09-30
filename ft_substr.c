@@ -7,11 +7,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 	if (!s || len == 0)
 		return (NULL);
-	ret = malloc(sizeof(char) * len);
+	if (start >= (unsigned int)ft_strlen(s))
+		return (ft_strdup(""));
+	ret = malloc(sizeof(char) * len + 1);
 	if (!ret)
 		return (NULL);
 	i = 0;
-	while (s[start + i] && i < len - 1)
+	while (s[start + i] && i < len)
 	{
 		ret[i] = s[start + i];
 		i++;
@@ -19,3 +21,18 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	ret[i] = '\0';
 	return (ret);
 }
+
+// int main()
+// {
+// 	const char *str = "Hello World";
+// 	unsigned int start = 15;
+// 	size_t len = 5;
+
+// 	char *substr = ft_substr(str, start, len);
+// 	if (substr)
+// 	{
+// 		printf("%s\n", substr);
+// 		free(substr);
+// 	}
+// 	return 0;
+// }

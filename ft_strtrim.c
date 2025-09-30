@@ -35,18 +35,18 @@ char	*ft_strtrim(char const *s1, char const *set)
 	return (ret);
 }
 
-int main(int argc, char *argv[])
-{
-	char *s1;
-	char *set;
-	char *res;
+// int main(int argc, char *argv[])
+// {
+// 	char *s1;
+// 	char *set;
+// 	char *res;
 
-	if (argc == 3)
-	{
-		s1 = argv[1];
-		set = argv[2];
-		res = ft_strtrim(s1, set);
-		printf("String after trim: '%s'\n", res);
-	}
-	return (0);
-}
+// 	if (argc == 3)
+// 	{
+// 		s1 = argv[1];
+// 		set = argv[2];
+// 		res = ft_strtrim(s1, set);
+// 		printf("String after trim: '%s'\n", res);
+// 	}
+// 	return (0);
+// }

@@ -7,14 +7,14 @@
  * @param void src
  * @param size_t bytes
  */
-void	ft_memmove(void *dest, const void *src, size_t bytes)
+void	*ft_memmove(void *dest, const void *src, size_t bytes)
 {
 	size_t				i;
 	const unsigned char	*s;
 	unsigned char		*d;
 
 	if (!dest || !src)
-		return ;
+		return (NULL);
 	i = 0;
 	s = (const unsigned char *)src;
 	d = (unsigned char *)dest;
@@ -31,4 +31,5 @@ void	ft_memmove(void *dest, const void *src, size_t bytes)
 			i++;
 		}
 	}
+	return (dest);
 }

@@ -4,6 +4,8 @@ void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ret;
 
+	if (size < 1)
+		return (NULL);
 	ret = malloc(count * size);
 	if (!ret)
 		return (NULL);

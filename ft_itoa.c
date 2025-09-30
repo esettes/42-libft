@@ -4,7 +4,7 @@ static int get_num_digits(int n)
 {
 	int i;
 
-	i = 0;
+	i = 1;
 	while(n / 10 != 0)
 	{
 		n /= 10;
@@ -19,22 +19,31 @@ char	*ft_itoa(int n)
 	int		count;
 	int		i;
 	char	*ret;
-	int		aux;
 
 	num = (long)n;
 	count = get_num_digits(num);
 	if (num < 0)
+	{
+		num *= -1;
 		count++;
+	}
 	ret = malloc(sizeof(char) * count + 1);
 	if (!ret)
 		return (NULL);
-	i = count;
+	i = count - 1;
 	while (i >= 0)
 	{
-		ret[i] = num % 10 + '0';
+		ret[i--] = (num % 10) + '0';
 		num /= 10;
-		i--;
 	}
+	if (n < 0)
+		ret[0] = '-';
 	ret[count] = '\0';
 	return (ret);
 }
+
+// int main()
+// {
+// 	printf("%s\n", ft_itoa(-9998));
+// 	return (0);
+// }
