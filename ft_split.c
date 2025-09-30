@@ -9,6 +9,8 @@ int	get_num_words(char const *s, char c)
 	i = 0;
 	check = 0;
 	words = 0;
+	if (!c)
+		return (1);
 	while (s[i])
 	{
 		if (s[i] && s[i] == c && check == 0)
@@ -36,6 +38,8 @@ char	**ft_split(char const *s1, char c)
 	int	start;
 	int	k;
 
+	if (!s1)
+		return (NULL);
 	ret = malloc(sizeof(char *) * get_num_words(s1, c) + 1);
 	printf("num words = %d\n", get_num_words(s1, c));
 	if (!ret)
