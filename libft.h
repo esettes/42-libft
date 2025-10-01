@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rstancu <rstancu@student.42.fr>            #+#  +:+       +#+        */
+/*   By: settes <settes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-10-01 10:37:10 by rstancu           #+#    #+#             */
-/*   Updated: 2025-10-01 10:37:10 by rstancu          ###   ########.fr       */
+/*   Created: 2025/10/01 10:37:10 by rstancu           #+#    #+#             */
+/*   Updated: 2025/10/01 14:32:51 by settes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <stdint.h>
+
+typedef struct s_list
+{
+    void			*content;
+    struct s_list	*next;
+}       t_list;
 
 int				ft_toupper(int c);
 int				ft_tolower(int c);
