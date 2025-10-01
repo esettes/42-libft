@@ -1,6 +1,7 @@
 {
 	"files.associations": {
 		"libft.h": "c",
-		"FT_MEMCHR.C": "cpp"
+		"FT_MEMCHR.C": "cpp",
+		"stdlib.h": "c"
 	}
 }

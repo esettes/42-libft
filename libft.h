@@ -1,9 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rstancu <rstancu@student.42.fr>            #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-10-01 10:37:10 by rstancu           #+#    #+#             */
+/*   Updated: 2025-10-01 10:37:10 by rstancu          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBFT_H
 # define LIBFT_H
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <unistd.h>
+#include <stdint.h>
 
 int				ft_toupper(int c);
 int				ft_tolower(int c);
@@ -12,7 +25,7 @@ int				ft_isdigit(int c);
 int				ft_isascii(int c);
 int				ft_isalpha(int c);
 int				ft_isalnum(int c);
-int				ft_strlen(const char *str);
+size_t			ft_strlen(const char *str);
 size_t			ft_strlcpy(char *dest, const char *src, size_t size);
 size_t			ft_strlcat(char *dest, const char *src, size_t size);
 void			*ft_memset(void *p, int val, size_t bytes);
@@ -34,9 +47,11 @@ char			*ft_strtrim(char const *s1, char const *set);
 char			*ft_strrchr(const char *s, int c);
 char			**ft_split(char const *s1, char c);
 char			*ft_itoa(int n);
-void	ft_putstr_fd(char *s, int fd);
-void	ft_putchar_fd(char c, int fd);
-void	ft_putendl_fd( char *s, int fd);
-void	ft_putnbr_fd(int n, int fd);
+void			ft_putstr_fd(char *s, int fd);
+void			ft_putchar_fd(char c, int fd);
+void			ft_putendl_fd( char *s, int fd);
+void			ft_putnbr_fd(int n, int fd);
+char			*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+void	ft_striteri(char *s, void (*f)(unsigned int, char*));
 
 #endif

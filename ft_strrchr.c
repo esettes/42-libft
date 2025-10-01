@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rstancu <rstancu@student.42.fr>            #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-10-01 10:37:26 by rstancu           #+#    #+#             */
+/*   Updated: 2025-10-01 10:37:26 by rstancu          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
 char	*ft_strrchr(const char *s, int c)
@@ -10,7 +22,7 @@ char	*ft_strrchr(const char *s, int c)
 		return (NULL);
 	str = (char *)s;
 	i = 0;
-	ret = -1;
+	ret = 0;
 	if (c > 255)
 		c = c % 256;
 	while (str[i])
@@ -19,7 +31,26 @@ char	*ft_strrchr(const char *s, int c)
 			ret = i;
 		i++;
 	}
-	if (ret == -1)
+	if (c == 0)
+		return (&str[i]);
+	if (ret == 0 && str[ret] != c)
 		return (NULL);
 	return (&str[ret]);
 }
+
+// int main()
+// {
+// 	const char *str = "tripouille";
+// 	int c = 0;
+
+// 	char *result = ft_strrchr(str, c);
+// 	if (result)
+// 	{
+// 		printf("last occurrence of '%c' in \"%s\" is at position: %ld\n", c, str, result - str);
+// 	}
+// 	else
+// 	{
+// 		printf("Character '%c' not found in \"%s\"\n", c, str);
+// 	}
+// 	return 0;
+// }

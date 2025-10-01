@@ -1,5 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtrim.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rstancu <rstancu@student.42.fr>            #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-10-01 10:36:48 by rstancu           #+#    #+#             */
+/*   Updated: 2025-10-01 10:36:48 by rstancu          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
+static int	check_char(char const *set, char c)
+{
+	size_t	i;
+
+	i = 0;
+	while (set[i] != '\0')
+	{
+		if (set[i] == c)
+			return (1);
+		i++;
+	}
+	return (0);
+}
 /**
  * Erases  chars of string 'set' from start and from end of string 's1'
  * since set is in s1, remaining string is returned
@@ -11,28 +36,31 @@
  */
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int		start;
-	int		len;
-	int 	end;
-	char	*ret;
-	int i = 0;
+	char	*cpy;
+	char	*p;
+	size_t	i;
+	size_t	j;
 
-	if (!s1)
+	if (!s1 || !set)
 		return (NULL);
-	start = 0;
-	while (s1[start] && ft_strchr(set, s1[start]))
-		start++;
-	end = ft_strlen((char *)s1);
-	while (s1[end - 1] && ft_strchr(set, s1[end - 1]) && end > start)
-		end--;
-	len = 0;
-	while ((start + len) <= end)
-		len++;
-	ret = malloc(sizeof(char) * len + 1);
-	while (start < end)
-		ret[i++] = *(s1 + start++);
-	ret[i] = '\0';
-	return (ret);
+	if (*s1 == 0)
+		return (ft_strdup(""));
+	i = 0;
+	j = ft_strlen(s1) - 1;
+	if (!s1)
+		return ((char *)s1);
+	while (check_char(set, *(char *)(s1 + i)))
+		i++;
+	while (check_char(set, *(char *)(s1 + j)) && j >= i)
+		j--;
+	cpy = (char *)malloc(sizeof(char) * (j - i) + 2);
+	p = cpy;
+	if (!p)
+		return (NULL);
+	while (i <= j)
+		*cpy++ = *(char *)(s1 + i++);
+	*cpy = '\0';
+	return (p);
 }
 
 // int main(int argc, char *argv[])

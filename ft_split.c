@@ -1,4 +1,24 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rstancu <rstancu@student.42.fr>            #+#  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025-10-01 10:36:44 by rstancu           #+#    #+#             */
+/*   Updated: 2025-10-01 10:36:44 by rstancu          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
+
+static char	**free_mem(void **tab, int k)
+{
+	while (k > 0)
+		free(tab[k--]);
+	free(tab);
+	return (NULL);
+}
 
 int	get_num_words(char const *s, char c)
 {
@@ -9,26 +29,36 @@ int	get_num_words(char const *s, char c)
 	i = 0;
 	check = 0;
 	words = 0;
-	if (!c)
-		return (1);
 	while (s[i])
 	{
-		if (s[i] && s[i] == c && check == 0)
+		if (s[i] != c && check == 0)
 		{
 			words++;
 			check = 1;
 		}
-		if (s[i] && s[i] != c && check == 1)
-		{
+		if (s[i] == c)
 			check = 0;
-		}
+		
 		i++;
 	}
-	if (s[i - 1] != c)
-	{
-		words++;
-	}
 	return (words);
+}
+
+static void	*save_word(char const *s, size_t start, size_t end)
+{
+	size_t	j;
+	char	*str;
+	char	*b;
+
+	j = 0;
+	str = malloc(sizeof(char) * (end - start + 1));
+	b = (char *)s;
+	if (!str)
+		return (NULL);
+	while (start < end)
+		str[j++] = b[start++];
+	str[j] = '\0';
+	return (str);
 }
 
 char	**ft_split(char const *s1, char c)
@@ -38,36 +68,23 @@ char	**ft_split(char const *s1, char c)
 	int	start;
 	int	k;
 
-	if (!s1)
-		return (NULL);
-	ret = malloc(sizeof(char *) * get_num_words(s1, c) + 1);
-	//printf("num words = %d\n", get_num_words(s1, c));
+	ret = malloc(sizeof(char *) * (get_num_words(s1, c) + 1));
 	if (!ret)
 		return (NULL);
-	i = 0;
+	i = -1;
 	start = 0;
 	k = 0;
-	while (s1[i] && k < get_num_words(s1, c))
+	while (s1[++i] && k < get_num_words(s1, c))
 	{
 		if (s1[i] != c)
 		{
-			while (s1[i] != c)
+			start = i;
+			while (s1[i] && s1[i] != c)
 				i++;
-			//printf("i = %d, start = %d\n", i, start);
-			//printf("s[i] = %c\n", s1[i]);
-			//printf("k = %d\n", k);
-			ret[k++] = ft_substr(s1, start, i + 1 - start);
-			//printf("ret[%d] = %s\n", k - 1, ret[k - 1]);
+			ret[k++] = save_word(s1, start, i);
 			if (!ret[k - 1])
-			{
-				while (k > 0)
-					free(ret[k--]);
-				free(ret);
-				return (NULL);
-			}
-			start = i + 1;
+				return (free_mem((void **)ret, k - 1));
 		}
-		i++;
 	}
 	ret[k] = NULL;
 	return (ret);
