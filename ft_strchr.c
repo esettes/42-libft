@@ -20,8 +20,6 @@ char	*ft_strchr(const char *str, int c)
 {
 	char	*s;
 
-	if (!str)
-		return (NULL);
 	s = (char *)str;
 	if (c > 255)
 		c = c % 256;

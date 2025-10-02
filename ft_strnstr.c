@@ -26,13 +26,13 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	size_t	j;
 	size_t	aux;
 
-	i = 0;
+	i = -1;
 	aux = len;
 	if (!little)
 		return ((char *)big);
 	if (little[0] == '\0')
 		return ((char *)big);
-	while (big[i] && aux)
+	while (big[++i] && aux)
 	{
 		j = 0;
 		aux = len - i;
@@ -46,7 +46,6 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 			if (!little[j])
 				return ((char *)&big[i]);
 		}
-		i++;
 	}
 	return (NULL);
 }

@@ -18,8 +18,6 @@ char	*ft_strrchr(const char *s, int c)
 	int		i;
 	int		ret;
 
-	if (!s)
-		return (NULL);
 	str = (char *)s;
 	i = 0;
 	ret = 0;

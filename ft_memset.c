@@ -13,8 +13,8 @@
 #include "libft.h"
 
 /**
- * Ft_memset() takes a pointer to a memory location, a value to set, and the number of bytes to set,
- * and returns a pointer to the memory location
+ * Ft_memset() takes a pointer to a memory location, a value to set, and the
+ * number of bytes to set, and returns a pointer to the memory location
  * 
  * @param void p This is the pointer to the memory area to be filled.
  * @param int val the value to be set

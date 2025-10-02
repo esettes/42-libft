@@ -19,7 +19,7 @@
  * @param size_t n Number of bytes to set to 0.
  * @param void *s Pointer to first location to fill.
  */
-void ft_bzero(void *s, size_t n)
+void	ft_bzero(void *s, size_t n)
 {
 	ft_memset(s, 0, n);
 }

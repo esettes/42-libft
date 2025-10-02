@@ -1,0 +1,11 @@
+# callgrind format
+version: 1
+creator: xtree-1
+pid: 855684
+cmd: ./a.out lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed non risus. Suspendisse i
+
+positions: line
+event: curB : currently allocated Bytes
+event: curBk : currently allocated Blocks
+events: curB  curBk 
+totals: (null)

@@ -90,18 +90,23 @@ char	**ft_split(char const *s1, char c)
 	return (ret);
 }
 
-// int main(int ac, char **av)
-// {
-// 	char **tab;
-// 	int i;
+__attribute__((weak))
+int main(int ac, char **av)
+{
+	char **tab;
+	int i;
 
-// 	(void)ac;
-// 	tab = ft_split(av[1], av[2][0]);
-// 	i = 0;
-// 	while (tab[i])
-// 	{
-// 		printf("%s\n", tab[i]);
-// 		i++;
-// 	}
-// 	return (0);
-// }
+	(void)ac;
+	tab = ft_split(av[1], av[2][0]);
+	i = 0;
+	while (tab[i])
+	{
+		printf("[%s]\n", tab[i]);
+		i++;
+	}
+	i = 0;
+	while (tab[i])
+		free(tab[i++]);
+	free(tab);
+	return (0);
+}

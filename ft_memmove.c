@@ -17,31 +17,47 @@
  * 
  * @param void dest
  * @param void src
- * @param size_t bytes
+ * @param size_t n
  */
-void	*ft_memmove(void *dest, const void *src, size_t bytes)
+// ...existing code...
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	size_t				i;
-	const unsigned char	*s;
-	unsigned char		*d;
+    const unsigned char	*s;
+    unsigned char		*d;
 
-	if (!dest || !src)
-		return (NULL);
-	i = 0;
-	s = (const unsigned char *)src;
-	d = (unsigned char *)dest;
-	if (d > s)
-	{
-		while (bytes--)
-			d[bytes] = s[bytes];
-	}
-	else
-	{
-		while (bytes--)
-		{
-			d[i] = s[i];
-			i++;
-		}
-	}
-	return (dest);
+    if (!dest && !src)
+        return (NULL);
+    s = (const unsigned char *)src;
+    d = (unsigned char *)dest;
+    if (s == d || n == 0)
+        return (dest);
+    // Si dest > src (regiones se pueden solapar con dest en zona superior) copiar hacia atrás
+    if (d > s && d < s + n)
+    {
+        s += n;
+        d += n;
+        while (n--)
+            *--d = *--s;
+    }
+    else
+    {
+        while (n--)
+            *d++ = *s++;
+    }
+    return (dest);
+}
+
+// ...existing code...
+__attribute__((weak))
+int	main(void)
+{
+	char *greed;
+	char	*ptr;
+	size_t	len;
+
+	len = 20;
+	greed = malloc(100);
+	ptr = ft_memmove(greed + 5, greed, 10);
+ 	printf("ptr: %p\n", ptr);
+	return (0);
 }
