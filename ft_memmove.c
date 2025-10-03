@@ -11,53 +11,50 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+
 /**
  * @brief same as memcpy but handling cases when source and destination
- * addresses are overlapping 
+ * addresses are overlapping. If overlap, pointers are positioned at the end
+ * and starts copying backwards.
  * 
  * @param void dest
  * @param void src
  * @param size_t n
  */
-// ...existing code...
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-    const unsigned char	*s;
-    unsigned char		*d;
+	const unsigned char	*s = (const unsigned char *)src;
+	unsigned char		*d;
 
-    if (!dest && !src)
-        return (NULL);
-    s = (const unsigned char *)src;
-    d = (unsigned char *)dest;
-    if (s == d || n == 0)
-        return (dest);
-    // Si dest > src (regiones se pueden solapar con dest en zona superior) copiar hacia atrás
-    if (d > s && d < s + n)
-    {
-        s += n;
-        d += n;
-        while (n--)
-            *--d = *--s;
-    }
-    else
-    {
-        while (n--)
-            *d++ = *s++;
-    }
-    return (dest);
+	if (!dest && !src)
+		return (NULL);
+	d = (unsigned char *)dest;
+	if (s == d || n == 0u)
+		return (dest);
+	if (d > s && d < s + n)
+	{
+		s += n;
+		d += n;
+		while (n--)
+			*--d = *--s;
+	}
+	else
+	{
+		while (n--)
+			*d++ = *s++;
+	}
+	return (dest);
 }
 
-// ...existing code...
 __attribute__((weak))
 int	main(void)
 {
-	char *greed;
+	char	*greed;
 	char	*ptr;
 	size_t	len;
 
 	len = 20;
 	greed = malloc(100);
 	ptr = ft_memmove(greed + 5, greed, 10);
- 	printf("ptr: %p\n", ptr);
 	return (0);
 }

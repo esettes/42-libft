@@ -12,39 +12,38 @@
 
 #include "libft.h"
 
-static char	**free_mem(void **tab, int k)
+static char	**free_memory(void **arr, size_t pos)
 {
-	while (k > 0)
-		free(tab[k--]);
-	free(tab);
+	while (pos--)
+		free (arr[pos]);
+	free(arr);
 	return (NULL);
 }
 
-int	get_num_words(char const *s, char c)
+static size_t	count_words(char const *s, char c)
 {
-	int	i;
-	int	check;
-	int	words;
+	size_t	words;
+	size_t	check;
+	char	*a;
 
-	i = 0;
-	check = 0;
 	words = 0;
-	while (s[i])
+	check = 0;
+	a = (char *)s;
+	while (*a)
 	{
-		if (s[i] != c && check == 0)
+		if (*a != c && check == 0)
 		{
 			words++;
 			check = 1;
 		}
-		if (s[i] == c)
+		if (*a == c)
 			check = 0;
-		
-		i++;
+		a++;
 	}
 	return (words);
 }
 
-static void	*save_word(char const *s, size_t start, size_t end)
+static void	*set_pos(char const *s, size_t start, size_t end)
 {
 	size_t	j;
 	char	*str;
@@ -61,47 +60,45 @@ static void	*save_word(char const *s, size_t start, size_t end)
 	return (str);
 }
 
-char	**ft_split(char const *s1, char c)
+char	**ft_split(char const *s, char c)
 {
-	char **ret;
-	int	i;
-	int	start;
-	int	k;
+	char	**arr;
+	size_t	i;
+	size_t	start;
+	size_t	pos;
 
-	ret = malloc(sizeof(char *) * (get_num_words(s1, c) + 1));
-	if (!ret)
-		return (NULL);
 	i = -1;
-	start = 0;
-	k = 0;
-	while (*(s1 + ++i) && k < get_num_words(s1, c))
+	pos = 0;
+	arr = malloc(sizeof(char *) * ((count_words(s, c)) + 1));
+	if (!arr)
+		return (NULL);
+	while (++i < ft_strlen(s) && pos < count_words(s, c))
 	{
-		if (*(s1 + i) != c)
+		if (*(s + i) != c)
 		{
 			start = i;
-			while (*(s1 + i) && *(s1 + i) != c)
+			while (i < ft_strlen(s) && *(s + i) != c)
 				i++;
-			ret[k++] = save_word(s1, start, i);
-			if (!ret[k - 1])
-				return (free_mem((void **)ret, k - 1));
+			arr[pos++] = set_pos(s, start, i);
+			if (arr[pos - 1] == NULL)
+				return (free_memory((void **)arr, pos));
 		}
 	}
-	ret[k] = NULL;
-	return (ret);
+	arr[pos] = 0;
+	return (arr);
 }
 
 __attribute__((weak))
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	char **tab;
-	int i;
+	char	**tab;
+	int		i;
 
 	(void)ac;
 	tab = ft_split(av[1], av[2][0]);
 	i = 0;
 	while (tab[i])
 	{
-		printf("[%s]\n", tab[i]);
 		i++;
 	}
 	i = 0;

@@ -25,14 +25,9 @@
 void	*ft_memset(void *p, int val, size_t bytes)
 {
 	unsigned char	*s;
-	size_t			i;
 
-	i = 0;
-	s = p;
-	while (i < bytes)
-	{
-		s[i] = (unsigned char)val;
-		i++;
-	}
+	s = (unsigned char *)p;
+	while (bytes--)
+		*s++ = (unsigned char)val;
 	return (p);
 }

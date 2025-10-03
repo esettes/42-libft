@@ -28,10 +28,12 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 
 	i = -1;
 	aux = len;
-	if (!little)
-		return ((char *)big);
+	// if (!little)
+	// 	return ((char *)big);
 	if (little[0] == '\0')
 		return ((char *)big);
+	if (!big && len == 0)
+		return (NULL);
 	while (big[++i] && aux)
 	{
 		j = 0;

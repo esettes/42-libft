@@ -15,20 +15,17 @@
 void	*ft_calloc(size_t count, size_t size)
 {
 	void	*ret;
+	size_t	sz;
 
-	if (count == 0 || size == 0)
-	{
-		ret = malloc(1);
-		if (!ret)
-			return (NULL);
-		ft_bzero(ret, 1);
-		return (ret);
-	}
-	if (size > SIZE_MAX / count)
+	if (count == 0u || size == 0u)
+		sz = 1u;
+	else if (size > SIZE_MAX / count)
 		return (NULL);
-	ret = malloc(count * size);
+	else
+		sz = count * size;
+	ret = malloc(sz);
 	if (!ret)
 		return (NULL);
-	ft_bzero(ret, (count * size));
+	ft_bzero(ret, sz);
 	return (ret);
 }

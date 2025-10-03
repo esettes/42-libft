@@ -12,32 +12,29 @@
 
 #include "libft.h"
 
-// ...existing code...
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-    const char	*s = src;
-    char		*d = dst;
-    size_t		n = size;
-    size_t		dlen;
-    size_t		slen;
+    const char	*s;
+    char		*d;
+    size_t		n;
+    size_t		destlen;
+    size_t		srclen;
 
-    /* Find current length of dst within size limit */
+    s = src;
+    d = dst;
+    n = size;
     while (n && *d)
     {
         d++;
         n--;
     }
-    dlen = (size_t)(d - dst);
-    slen = ft_strlen(s);
+    destlen = (size_t)(d - dst);
+    srclen = ft_strlen(s);
     if (n == 0)
-        return (dlen + slen);
-    /* Space left (excluding null terminator) */
-    n--; 
-    while (n && *s)
-    {
+        return (destlen + srclen);
+   // n--; 
+    while (--n && *s)
         *d++ = *s++;
-        n--;
-    }
     *d = '\0';
-    return (dlen + slen);
+    return (destlen + srclen);
 }

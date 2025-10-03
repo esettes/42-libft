@@ -12,12 +12,12 @@
 
 #include "libft.h"
 
-static int get_num_digits(int n)
+static int	get_num_digits(int n)
 {
-	int i;
+	int	i;
 
 	i = 1;
-	while(n / 10 != 0)
+	while (n / 10 != 0)
 	{
 		n /= 10;
 		i++;

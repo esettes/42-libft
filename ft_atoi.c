@@ -20,7 +20,7 @@ int	check_chars(const char *str, int *is_neg)
 	i = 0;
 	sign = 0;
 	while ((str[i] > 8 && str[i] < 14) || str[i] == ' ')
-			i++;
+		i++;
 	while (str[i] == '+' || str[i] == '-')
 	{
 		sign++;
@@ -42,8 +42,6 @@ int	ft_atoi(const char *str)
 	i = 0;
 	res = 0;
 	is_neg = 0;
-	if (!str)
-		return (0);
 	i = check_chars(str, &is_neg);
 	if (i == -1)
 		return (0);
@@ -59,8 +57,8 @@ int	ft_atoi(const char *str)
 
 // int main()
 // {
-// 	const char *str = "1\t\t42";
+// 	const char *str = "+\t\v\f\r\n \f1234";
 // 	int result = ft_atoi(str);
-// 	printf("Result: %d\n", result); // Expected output: -42
+// 	printf("my result: %d\natoi result: %d \n", result, atoi(str)); // Expected output: -42
 // 	return 0;
 // }
