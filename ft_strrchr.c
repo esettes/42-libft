@@ -44,11 +44,7 @@ char	*ft_strrchr(const char *s, int c)
 // 	char *result = ft_strrchr(str, c);
 // 	if (result)
 // 	{
-// 		printf("last occurrence of '%c' in \"%s\" is at position: %ld\n", c, str, result - str);
-// 	}
-// 	else
-// 	{
-// 		printf("Character '%c' not found in \"%s\"\n", c, str);
+// 		printf("last '%c' in \"%s\" in pos: %ld\n", c, str, result - str);
 // 	}
 // 	return 0;
 // }

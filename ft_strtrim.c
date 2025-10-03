@@ -25,6 +25,7 @@ static int	check_char(char const *set, char c)
 	}
 	return (0);
 }
+
 /**
  * Erases  chars of string 'set' from start and from end of string 's1'
  * since set is in s1, remaining string is returned

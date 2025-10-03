@@ -59,6 +59,6 @@ int	ft_atoi(const char *str)
 // {
 // 	const char *str = "+\t\v\f\r\n \f1234";
 // 	int result = ft_atoi(str);
-// 	printf("my result: %d\natoi result: %d \n", result, atoi(str)); // Expected output: -42
+// 	printf("my result: %d\natoi result: %d \n", result, atoi(str));
 // 	return 0;
 // }
