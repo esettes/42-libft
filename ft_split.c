@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rstancu <rstancu@student.42.fr>            #+#  +:+       +#+        */
+/*   By: settes <settes@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025-10-01 10:36:44 by rstancu           #+#    #+#             */
-/*   Updated: 2025-10-01 10:36:44 by rstancu          ###   ########.fr       */
+/*   Created: 2025/10/01 10:36:44 by rstancu           #+#    #+#             */
+/*   Updated: 2025/10/03 10:13:10 by settes           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,12 @@ char	**ft_split(char const *s1, char c)
 	i = -1;
 	start = 0;
 	k = 0;
-	while (s1[++i] && k < get_num_words(s1, c))
+	while (*(s1 + ++i) && k < get_num_words(s1, c))
 	{
-		if (s1[i] != c)
+		if (*(s1 + i) != c)
 		{
 			start = i;
-			while (s1[i] && s1[i] != c)
+			while (*(s1 + i) && *(s1 + i) != c)
 				i++;
 			ret[k++] = save_word(s1, start, i);
 			if (!ret[k - 1])
